@@ -20,10 +20,10 @@ class HelpOrderController {
     const helpOrders = await HelpOrder.findAll({
       where: { student_id: studentId },
       order: ['created_at'],
-      attributes: ['id', 'question', 'answer', 'answer_at']
+      attributes: ['id', 'question', 'answer', 'answer_at'],
     });
 
-    return res.json(helpOrders)
+    return res.json(helpOrders);
   }
 
   async store(req, res) {
@@ -53,12 +53,12 @@ class HelpOrderController {
     });
 
     return res.json({
-      helpOrder
+      helpOrder,
     });
   }
 
   async update(req, res) {
-    const { helpId } = req.params
+    const { helpId } = req.params;
     const { answer } = req.body;
 
     const schema = Yup.object().shape({
@@ -87,7 +87,7 @@ class HelpOrderController {
 
     await Queue.add(QuestionAnsweredMail.key, { helpOrder });
 
-    return res.json(helpOrder)
+    return res.json(helpOrder);
   }
 }
 

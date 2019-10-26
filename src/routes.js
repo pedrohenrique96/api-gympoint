@@ -29,10 +29,12 @@ routes.post('/students', StudentsController.store);
 
 routes.get('/plans', PlanController.index);
 routes.post('/plans', PlanController.store);
-// routes.put('/plans/:id', PlanController.update);
-// routes.detele('/plans/:id', PlanController.delete);
+routes.put('/plans/:id', PlanController.update);
+routes.delete('/plans/:id', PlanController.delete);
 
 routes.get('/enrollment', EnrollmentController.index);
 routes.post('/enrollment', EnrollmentController.store);
+routes.put('/enrollment/:enrollmentId', EnrollmentController.update);
+routes.delete('/enrollment/:enrollmentId', EnrollmentController.delete);
 
 export default routes;

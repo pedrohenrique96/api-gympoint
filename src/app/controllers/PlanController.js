@@ -25,16 +25,39 @@ class PlanController {
   }
 
   async update(req, res) {
-    // const plan = await Plan.update({
-    //   where: { id: req.params.id },
+    const schema = Yup.object().shape({
+      title: Yup.string(),
+      duration: Yup.number().positive(),
+      price: Yup.number().positive(),
+    });
 
-    // })
-    return res.json();
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+    const { planId } = req.params;
+
+    const plan = await Plan.findByPk(planId);
+
+    if (!plan) {
+      return res.status(404).json({ error: 'This plan does not exists' });
+    }
+
+    await plan.update(req.body);
+
+    return res.json(plan);
   }
 
   async delete(req, res) {
-    // const plan = await Plan.create(req.body);
-    return res.json();
+    const { planId } = req.params;
+
+    const plan = await Plan.findByPk(planId);
+
+    if (!plan) {
+      return res.status(404).json({ error: 'This plan does not exists' });
+    }
+
+    await Plan.destroy();
+    return res.json({ message: 'Plan delected success.' });
   }
 }
 

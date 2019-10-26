@@ -8,14 +8,7 @@ class WelcomeMail {
   }
 
   async handle({ data }) {
-    const {
-      name,
-      email,
-      start_date,
-      end_date,
-      planTitle,
-      price,
-    } = data;
+    const { name, email, start_date, end_date, planTitle, price } = data;
 
     await Mail.sendMail({
       to: email,

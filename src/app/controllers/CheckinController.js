@@ -1,6 +1,5 @@
 import { subDays } from 'date-fns';
-import { Op } from 'sequelize';
-import Checkin from '../models/Checkin';
+import Checkin from '../Schemas/Checkin';
 import Student from '../models/Student';
 
 class CheckinController {
@@ -12,19 +11,11 @@ class CheckinController {
     });
 
     if (!student) {
-      return res.status(400).json({ error: 'This user is not exists' });
+      return res.status(400).json({ error: 'This student is not exists' });
     }
 
-    const checkins = await Checkin.findAll({
-      where: { student_id: studentId },
-      attributes: ['id'],
-      include: [
-        {
-          model: Student,
-          as: 'student',
-          attributes: ['name', 'email'],
-        },
-      ],
+    const checkins = await Checkin.find({
+      student_id: studentId,
     });
     return res.json(checkins);
   }
@@ -37,18 +28,16 @@ class CheckinController {
     });
 
     if (!student) {
-      return res.status(400).json({ error: 'This user is not exists' });
+      return res.status(400).json({ error: 'This student is not exists' });
     }
 
-    const checkins = await Checkin.findAll({
-      where: {
-        student_id: studentId,
-        created_at: { [Op.between]: [subDays(new Date(), 7), new Date()] },
-      },
+    const checkins = await Checkin.find({
+      student_id: studentId,
+      createdAt: { $gte: [subDays(new Date(), 7)], $lt: new Date() },
     });
 
     if (checkins.length >= 5) {
-      return res.status(400).json({ error: 'Check-ins number exceeded' });
+      return res.status(401).json({ error: 'Checkins number exceeded' });
     }
 
     const checkin = await Checkin.create({ student_id: studentId });

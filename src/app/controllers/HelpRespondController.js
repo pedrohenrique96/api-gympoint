@@ -7,15 +7,16 @@ class HelpRespondController {
       where: { answer: null },
       order: ['created_at'],
       attributes: ['id', 'question'],
-      include: [{
-        model: Student,
-        as: 'student',
-        attributes: ['name', 'email']
-      }]
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+      ],
     });
 
-    return res.json(helpOrders)
+    return res.json(helpOrders);
   }
 }
-
-export default new HelpRespondController
+export default new HelpRespondController();

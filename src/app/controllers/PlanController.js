@@ -4,7 +4,7 @@ import Plan from '../models/Plan';
 class PlanController {
   async index(req, res) {
     const plan = await Plan.findAll({
-      attributes: ['id', 'duration', 'price'],
+      attributes: ['id', 'title', 'duration', 'price'],
     });
     return res.json(plan);
   }

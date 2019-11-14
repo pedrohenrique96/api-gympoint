@@ -25,6 +25,7 @@ routes.use(authMiddleware);
 routes.get('/help-orders', HelpRespondController.index);
 routes.put('/help-orders/:helpId/answer', HelpOrderController.update);
 
+routes.get('/students', StudentsController.index);
 routes.post('/students', StudentsController.store);
 
 routes.get('/plans', PlanController.index);

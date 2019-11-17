@@ -2,9 +2,6 @@ import * as Yup from 'yup';
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
 
-import Queue from '../../lib/Queue';
-import QuestionAnsweredMail from '../jobs/QuestionAnsweredMail';
-
 class HelpOrderController {
   async index(req, res) {
     const { studentId } = req.params;
@@ -55,39 +52,6 @@ class HelpOrderController {
     return res.json({
       helpOrder,
     });
-  }
-
-  async update(req, res) {
-    const { helpId } = req.params;
-    const { answer } = req.body;
-
-    const schema = Yup.object().shape({
-      answer: Yup.string(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
-
-    const helpOrder = await HelpOrder.findByPk(helpId, {
-      attributes: ['id', 'question', 'answer'],
-      include: [
-        {
-          model: Student,
-          as: 'student',
-          attributes: ['name', 'email'],
-        },
-      ],
-    });
-
-    await helpOrder.update({
-      answer,
-      answer_at: new Date(),
-    });
-
-    await Queue.add(QuestionAnsweredMail.key, { helpOrder });
-
-    return res.json(helpOrder);
   }
 }
 

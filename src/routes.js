@@ -26,6 +26,7 @@ routes.get('/help-orders', HelpRespondController.index);
 routes.post('/help-orders/:helpId/answer', HelpRespondController.store);
 
 routes.get('/students', StudentsController.index);
+routes.get('/students/:studentId', StudentsController.show);
 routes.post('/students', StudentsController.store);
 
 routes.get('/plans', PlanController.index);

@@ -21,6 +21,16 @@ class StudentsController {
     return res.json(students);
   }
 
+  async show(req, res) {
+    const { studentId } = req.params;
+
+    const students = await Student.findAll({
+      where: { id: studentId }
+    });
+
+    return res.json(students);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),

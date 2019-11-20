@@ -28,6 +28,8 @@ routes.post('/help-orders/:helpId/answer', HelpRespondController.store);
 routes.get('/students', StudentsController.index);
 routes.get('/students/:studentId', StudentsController.show);
 routes.post('/students', StudentsController.store);
+routes.put('/students/:studentId', StudentsController.update);
+routes.delete('/students/:studentId', StudentsController.delete);
 
 routes.get('/plans', PlanController.index);
 routes.get('/plans/:planId', PlanController.show);

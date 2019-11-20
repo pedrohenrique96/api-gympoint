@@ -14,7 +14,7 @@ class PlanController {
 
     const plan = await Plan.findAll({
       where: { id: planId },
-      attributes: ['id', 'title', 'duration', 'price']
+      attributes: ['id', 'title', 'duration', 'price'],
     });
 
     return res.json(plan);
@@ -67,7 +67,7 @@ class PlanController {
       return res.status(404).json({ error: 'This plan does not exists' });
     }
 
-    await Plan.destroy();
+    await plan.destroy();
     return res.json({ message: 'Plan delected success.' });
   }
 }

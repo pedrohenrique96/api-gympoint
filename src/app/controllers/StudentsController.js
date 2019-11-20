@@ -13,10 +13,7 @@ class StudentsController {
       return res.json(student);
     }
 
-    const students = await Student.findAll({
-      limit: 10,
-      offset: (page - 1) * 10,
-    });
+    const students = await Student.findAll();
 
     return res.json(students);
   }

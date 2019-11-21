@@ -11,7 +11,7 @@ import Welcome from '../jobs/WelcomeMail';
 class EnrollmentController {
   async index(req, res) {
     const enrollment = await Enrollment.findAll({
-      attributes: ['start_date', 'end_date', 'price', 'active'],
+      attributes: ['start_date', 'end_date', 'price', 'active', 'id'],
       include: [
         {
           model: Student,

@@ -26,6 +26,27 @@ class EnrollmentController {
     return res.json(enrollment);
   }
 
+  async show(req, res) {
+    const { enrollmentId } = req.params;
+
+    const enrollment = await Enrollment.findOne({
+      where: { id: enrollmentId },
+      attributes: ['start_date', 'end_date', 'price', 'id'],
+      include: [
+        {
+          model: Student,
+          as: 'student',
+        },
+        {
+          model: Plan,
+          as: 'plan',
+        },
+      ],
+    });
+
+    return res.json(enrollment);
+  }
+
   async store(req, res) {
     const { start_date, student_id, plan_id } = req.body;
 

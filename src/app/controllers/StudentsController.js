@@ -21,11 +21,12 @@ class StudentsController {
   async show(req, res) {
     const { studentId } = req.params;
 
-    const students = await Student.findAll({
+    const student = await Student.findOne({
       where: { id: studentId },
+      attributes: ['name', 'email', 'age', 'weight', 'height'],
     });
 
-    return res.json(students);
+    return res.json(student);
   }
 
   async store(req, res) {

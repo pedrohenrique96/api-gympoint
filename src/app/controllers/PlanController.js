@@ -12,7 +12,7 @@ class PlanController {
   async show(req, res) {
     const { planId } = req.params;
 
-    const plan = await Plan.findAll({
+    const plan = await Plan.findOne({
       where: { id: planId },
       attributes: ['id', 'title', 'duration', 'price'],
     });

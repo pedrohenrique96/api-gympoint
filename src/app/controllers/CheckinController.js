@@ -37,7 +37,7 @@ class CheckinController {
     });
 
     if (checkins.length >= 5) {
-      return res.status(401).json({ error: 'Checkins number exceeded' });
+      return res.status(401).json({ error: 'Check-ins number exceeded' });
     }
 
     const checkin = await Checkin.create({ student_id: studentId });

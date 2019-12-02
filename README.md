@@ -34,7 +34,7 @@ Para rodar o projeto será necessário instalar as seguintes aplicações:
 Subindo a base de dados:
 
 ```sh
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d gympoint
+docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 ```
 
 Obs: Vocé pode escolher qualquer nome para a base de dados, devendo somente alterar no arquivo `database.js` dentro da pasta `config`, assim como valores referente ao ambiente (usuario, host, etc).

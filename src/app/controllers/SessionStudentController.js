@@ -2,15 +2,15 @@ import Student from '../models/Student';
 
 class SessionStudentController {
   async store(req, res) {
-    const { id } = req.body;
+    const { studentId } = req.params;
 
-    const studentId = await Student.findOne({ where: id });
+    const student_id = await Student.findOne({ where: { id: studentId } });
 
-    if (!studentId) {
+    if (!student_id) {
       return res.status(400).json({ error: 'Student not found.' });
     }
 
-    return res.json(studentId);
+    return res.json(student_id);
   }
 }
 

@@ -63,8 +63,6 @@ Para iniciar o projeto:
 yarn dev ou npm dev
 ```
 
-[Acesse aqui](http://localhost:8000)
-
 ## Construido com
 
 - [Bcryptjs](https://github.com/dcodeIO/bcrypt.js)

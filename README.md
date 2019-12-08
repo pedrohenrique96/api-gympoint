@@ -42,13 +42,19 @@ Obs: Vocé pode escolher qualquer nome para a base de dados, devendo somente alt
 É necessário rodar as migrations para que o _Sequelize_ crie as tabelas necessárias no banco de dados, através do comando:
 
 ```
-yarn sequelize db:migrate
+yarn sequelize db:migrate and yarn sequelize db:seed:all
 ```
 
 Redis é usado para armazenar os valores de sessão.
 
 ```
 docker run -p 6379:6379 --name redis -d redis
+```
+
+Mongo é usado para o aluno fazer o check-in no sistema.
+
+```
+docker run -p 27017:27017 --name mongo -d mongo
 ```
 
 Instalando as dependências.

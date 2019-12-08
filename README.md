@@ -42,7 +42,7 @@ Obs: Vocé pode escolher qualquer nome para a base de dados, devendo somente alt
 É necessário rodar as migrations para que o _Sequelize_ crie as tabelas necessárias no banco de dados, através do comando:
 
 ```
-npx sequelize db:migrate
+yarn sequelize db:migrate
 ```
 
 Redis é usado para armazenar os valores de sessão.

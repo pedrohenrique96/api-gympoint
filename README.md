@@ -79,6 +79,9 @@ yarn dev ou npm dev
 - [@sentry/node](https://sentry.io/for/node/)
 - [Nodemailer](https://nodemailer.com/about/)
 
-## Autor
+## :memo: License
+This project is under the MIT license. See the [LICENSE](https://github.com/douglasporto/meetapp-gostack/blob/master/LICENSE) for more information.
 
-- **Pedro Henrique** - [Github](https://github.com/pedrook16)
+---
+
+Made with ♥ by Pedro Henrique :wave: [Get in touch!](https://www.linkedin.com/in/pedro-henrique-08a366113/)
